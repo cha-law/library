@@ -67,6 +67,24 @@ function removeBook(event) {
     event.target.parentElement.parentElement.parentElement.remove();
 }
 
+function openDialog() {
+
+}
+
+// New Book button opens the dialog modally
+const dialog = document.querySelector("dialog");
+let newBookButton = document.querySelector(".new-book");
+let dialogCloseButton = document.querySelector(".dialog-close-button");
+
+newBookButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+dialogCloseButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    dialog.close();
+});
+
 // Adding example books
 addBookToLibrary("1984", "George Orwell", 183, "Read", 4); 
 addBookToLibrary("Harry Potter and the Philosopher's Stone", "J.K Rowling", 223, "Unread", 5);

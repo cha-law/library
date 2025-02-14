@@ -26,5 +26,32 @@
         </div>
         <div class="books"></div>
     </div>
+    <dialog>
+        <div class="dialog-wrapper">
+            <div class="dialog-top">
+                <h3>New Book</h3>
+                <button formmethod="dialog" class="remove close-button"><img src="./images/close.svg" alt=""></button>
+            </div>
+            <form action="#" method="dialog"> 
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" required>
+                </div>
+                <div>
+                    <label for="author">Author</label>
+                    <input type="text" required>
+                </div>
+                <div>
+                    <label for="pages">Pages</label>
+                    <input type="number" min="1" max="10000" required>
+                </div>
+                <div>
+                    <label for="rating">Rating</label>
+                    <input type="number" min="1" max="5" placeholder="1 - 5" required>
+                </div>
+                <button id="add-book-button">Add Book</button>
+            </form>
+        </div>
+    </dialog>
 </body>
 </html>

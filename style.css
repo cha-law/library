@@ -22,7 +22,7 @@ p {
 .library-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-top: min(15vh, 300px);
     gap: 24px;
     height: 100vh;
     flex-direction: column;
@@ -31,7 +31,7 @@ p {
 .header,
 .books > div {
     background-color: #f7f7f7;
-    width: min(75vw, 1000px);
+    width: min(80vw, 1000px);
     border-radius: 12px;
     border: solid 1px var(--pastel-green);
 }
@@ -110,4 +110,52 @@ img {
 
 .unread:hover {
     background-color: #cecece;
+}
+
+/* DIALOG */
+
+dialog {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+}
+
+.dialog-wrapper {
+    background-color: #f7f7f7;
+    padding: 24px 24px;
+    border-radius: 12px;
+    border: solid 1px var(--pastel-green);
+}
+
+.dialog-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    color: var(--text-grey);
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+form > div > input {
+    font-size: 1rem;
+    padding: 4px;
+}
+
+form button {
+    margin-top: 8px;
 }
