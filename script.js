@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 const booksDiv = document.querySelector(".books");
 
@@ -17,8 +17,9 @@ function addBookToLibrary(title, author, pages, status, rating) {
 }
 
 function addBooksToWebpage() {
-    myLibrary.forEach((book) => {
+    myLibrary.forEach((book, index) => {
         let newBookDiv = document.createElement("div");
+        newBookDiv.dataset.index = index;
         booksDiv.appendChild(newBookDiv);
 
         // Looping through the properties of the book Object.
@@ -64,7 +65,14 @@ function changeReadStatus(event) {
 }
 
 function removeBook(event) {
-    event.target.parentElement.parentElement.parentElement.remove();
+    let parentDiv = event.target.parentElement.parentElement.parentElement;
+
+    // Remove from books array by filtering the array
+    let bookIndex = parentDiv.dataset.index;
+    myLibrary = myLibrary.filter((item) => bookIndex != myLibrary.indexOf(item));
+
+    // Remove from webpage by refreshing the page
+    refreshBooks();
 }
 
 function refreshBooks() {
@@ -85,10 +93,10 @@ newBookButton.addEventListener("click", () => {
 });
 
 function addBook() {
-    let title = document.querySelector("#title-input");
-    let author = document.querySelector("#author-input");
-    let pages = document.querySelector("#pages-input");
-    let rating = document.querySelector("#rating-input");
+    let title = document.querySelector("#title");
+    let author = document.querySelector("#author");
+    let pages = document.querySelector("#pages");
+    let rating = document.querySelector("#rating");
     addBookToLibrary(title.value, author.value, pages.value, "Unread", rating.value);
     refreshBooks();
 
