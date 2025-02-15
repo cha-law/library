@@ -24,7 +24,6 @@ p {
     align-items: center;
     margin-top: min(15vh, 300px);
     gap: 24px;
-    height: 100vh;
     flex-direction: column;
 }
 
@@ -40,7 +39,7 @@ p {
     padding: 24px 36px;
 }
 
-h3 {
+h3 { 
     color: var(--header-green);
 }
 
