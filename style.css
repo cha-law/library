@@ -114,7 +114,7 @@ img {
 
 /* DIALOG */
 
-dialog {
+dialog[open] {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -135,6 +135,7 @@ dialog {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: row;
     margin-bottom: 24px;
 }
 
@@ -145,7 +146,7 @@ form {
     color: var(--text-grey);
 }
 
-form > div {
+.input-div {
     display: flex;
     flex-direction: column;
     gap: 4px;
