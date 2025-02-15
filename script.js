@@ -23,15 +23,19 @@ function addBooksToWebpage() {
         booksDiv.appendChild(newBookDiv);
 
         // Looping through the properties of the book Object.
-        Object.keys(book).forEach(function(key,index) {
+        Object.keys(book).forEach(function(key) {
             let newElementDiv = document.createElement("div");
             newBookDiv.appendChild(newElementDiv);
             
             if (key === "status") {
                 let newReadButton = document.createElement("button");
-                newReadButton.textContent = "Unread";
+                let bookArrayElement = myLibrary[index];
+
+                newReadButton.textContent = bookArrayElement.status;
                 newReadButton.addEventListener("click", changeReadStatus);
-                newReadButton.classList.toggle("unread");
+
+                // Adding .unread class if needed
+                if (bookArrayElement.status === "Unread") {newReadButton.classList.toggle("unread")};
                 newElementDiv.appendChild(newReadButton);
             } else {
                 let newText = document.createElement("p");
@@ -56,10 +60,14 @@ function addBooksToWebpage() {
 };
 
 function changeReadStatus(event) {
+    let parentDiv = event.target.parentElement.parentElement;
+
     if (event.target.textContent === "Unread") {
         event.target.textContent = "Read";
+        myLibrary[parentDiv.dataset.index].status = "Read"; 
     } else {
         event.target.textContent = "Unread";
+        myLibrary[parentDiv.dataset.index].status = "Unread"; 
     }
     event.target.classList.toggle("unread");
 }
@@ -112,7 +120,7 @@ dialogCloseButton.addEventListener("click", (event) => {
 })
 
 // Adding example books
-addBookToLibrary("1984", "George Orwell", 183, "Read", 4); 
+addBookToLibrary("1984", "George Orwell", 183, "Unread", 4); 
 addBookToLibrary("Harry Potter and the Philosopher's Stone", "J.K Rowling", 223, "Unread", 5);
 addBookToLibrary("The Lord of the Rings", "J. R. R. Tolkien", 1200, "Unread", 2);
 
