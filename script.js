@@ -1,5 +1,7 @@
 const myLibrary = [];
 
+const booksDiv = document.querySelector(".books");
+
 // Constructor
 function Book(title, author, pages, status, rating) {
   this.title = title;
@@ -15,8 +17,6 @@ function addBookToLibrary(title, author, pages, status, rating) {
 }
 
 function addBooksToWebpage() {
-    const booksDiv = document.querySelector(".books");
-
     myLibrary.forEach((book) => {
         let newBookDiv = document.createElement("div");
         booksDiv.appendChild(newBookDiv);
@@ -67,23 +67,41 @@ function removeBook(event) {
     event.target.parentElement.parentElement.parentElement.remove();
 }
 
-function openDialog() {
-
+function refreshBooks() {
+    const displayedBooks = document.querySelectorAll(".books div");
+    displayedBooks.forEach((book) => {
+        book.remove();
+    });
+    addBooksToWebpage();
 }
 
 // New Book button opens the dialog modally
 const dialog = document.querySelector("dialog");
 let newBookButton = document.querySelector(".new-book");
-let dialogCloseButton = document.querySelector(".dialog-close-button");
+let dialogCloseButton = document.querySelector(".close-button");
 
 newBookButton.addEventListener("click", () => {
     dialog.showModal();
 });
 
+function addBook() {
+    let title = document.querySelector("#title-input");
+    let author = document.querySelector("#author-input");
+    let pages = document.querySelector("#pages-input");
+    let rating = document.querySelector("#rating-input");
+    addBookToLibrary(title.value, author.value, pages.value, "Unread", rating.value);
+    refreshBooks();
+
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    rating.value = "";
+};
+
 dialogCloseButton.addEventListener("click", (event) => {
     event.preventDefault();
     dialog.close();
-});
+})
 
 // Adding example books
 addBookToLibrary("1984", "George Orwell", 183, "Read", 4); 
