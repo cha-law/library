@@ -2,13 +2,15 @@ let myLibrary = [];
 
 const booksDiv = document.querySelector(".books");
 
-// Constructor
-function Book(title, author, pages, status, rating) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
-  this.rating = rating;
+// Book Class
+class Book {
+    constructor(inputTitle, inputAuthor, inputPages, newStatus, inputRating) {
+        this.title = inputTitle;
+        this.author = inputAuthor;
+        this.pages = inputPages;
+        this.status = newStatus;
+        this.rating = inputRating;
+    }
 }
 
 function addBookToLibrary(title, author, pages, status, rating) {
